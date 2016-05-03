@@ -84,7 +84,7 @@ Err, olvidar agua
 Err, forget about agua
 ```
 
-### Lest all factoids
+### Listar todos los factoides
 
 Para listar todos los factoides, usar:
 
