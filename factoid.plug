@@ -1,9 +1,0 @@
-[Core]
-Name = Factoid
-Module = factoid
-
-[Documentation]
-Description = A plugin for Errbot that allows chat users to create factoids.
-
-[Python]
-Version = 2+

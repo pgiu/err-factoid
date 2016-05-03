@@ -1,0 +1,9 @@
+[Core]
+Name = Factoides
+Module = factoides
+
+[Documentation]
+Description = Un plugin para crear factoides en espaniol
+
+[Python]
+Version = 2+

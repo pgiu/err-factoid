@@ -1,25 +1,22 @@
-[![Build Status](https://travis-ci.org/alimac/err-factoid.svg?branch=master)](https://travis-ci.org/alimac/err-factoid)
-[![Coverage Status](https://coveralls.io/repos/alimac/err-factoid/badge.svg?branch=master&service=github)](https://coveralls.io/github/alimac/err-factoid?branch=master)
 
-# Factoid plugin for Errbot
+# Plugin Factoides para Errbot
+**Factoides** es un plugin para [Errbot](http://errbot.io), un bot de chat basado en Python.
+Permite a los usuarios crear "factoides", que el bot puede usar a demanda. 
+Es la versión en español del plugin original hecho por [alimac](https://github.com/alimac/err-factoid).
 
-Factoid is a plugin for [Errbot](http://errbot.io), a Python-based chat bot.
-It allows chat users to create "factoids" which the bot can recall on demand.
+## Instalación
 
-## Installation
-
-To install the plugin, tell your bot in a private chat:
+Para instalar el plugin, abrir una ventana de chat privada con el bot e ingresar:
 
 ```
-!repos install https://github.com/alimac/err-factoid.git
+!repos install https://github.com/pgiu/err-factoid.git
 ```
 
-## Configuration
+## Configuración
 
-There is nothing to configure, yet.
+No hay nada que configurar, por ahora.
 
-While not required, I recommend that you uncomment and set the following in your
-`config.py` file:
+A pesar de que no es requerido, recomiendo que descomenten las siguientes líneas del archivo de configuración `config.py`:
 
 ```
 BOT_ALT_PREFIXES = ('Err',)
@@ -27,78 +24,77 @@ BOT_ALT_PREFIX_SEPARATORS = (':', ',', ';')
 BOT_ALT_PREFIX_CASEINSENSITIVE = True
 ```
 
-## Interaction
+## Interacción
 
-This plugin allows your bot to store and recall "factoids". Factoids are between
-one and three words in length and follow the formula `thing is description`.
+El plugin permite que el bot guarde y muestre "factoides". Los factoides tienen entre una y tres palabras y siguen la fórmula `algo es descripción`.
 
-Examples:
-```
-!water is wet
-!hot water is wet
-!super hot water is wet and scalding
-```
-
-### Add a new factoid
+Ejemplos:
 
 ```
-!water is wet
+!agua es mojada
+!agua caliente es mojada
+!agua muy caliente es mojada y quema
 ```
 
-Or, if you enabled the recommended prefixes:
+### Agregar un nuevo factoide
 
 ```
-Err, water is wet
+!agua es mojada
 ```
 
-Your bot should respond with:
+O, si están habilitados los prefijos alternativos,
 
 ```
-Got it, water is wet
+Err, agua es mojada
+```
+
+El robot debería responder:
+
+```
+Perfecto, agua es mojada
 ```
 
 ### Ask about a factoid
 
-To have the bot recall a factoid, simply ask:
+Para que el bot te cuente lo que le enseñaste, escribe:
 
 ```
-water?
-what is water?
+agua?
+que es agua?
 ```
 
-Your bot should reply:
+El bot debería responder:
 
 ```
-water is wet
+agua es mojada
 ```
 
-### Remove a factoid
+### Remover un factoide
 
-To remove one of the factoids, say one of the following:
-
-```
-!forget water
-!forget about water
-```
-
-Or, if you enabled the alternate prefix:
+Para borrar un factoide, escribir lo siguiente
 
 ```
-Err, forget water
-Err, forget about water
+!olvidar agua
 ```
 
-### List all factoids
-
-To list all the factoids, use:
+O, si están hablitados los prefijos alternativos,
 
 ```
-!list factoids
+Err, olvidar agua
+Err, forget about agua
 ```
 
-The bot should respond with a comma-delimited list of factoids it knows about.
+### Lest all factoids
+
+Para listar todos los factoides, usar:
 
 ```
-I'm Err! I know about:
-water, hot water, very hot water
+!listar factoides
+```
+
+El bot debería responder por una lista de las cosas que conoce.
+
+```
+Mi nombre es Err y conozco sobre:
+agua, agua caliente, agua muy caliente
 ```
