@@ -9,13 +9,13 @@ class Factoides(BotPlugin):
     factoid_store = {}
     re_learn_factoid = r'^((\w+\s??){1,3}) es (.+?)(\?+)?$'
     re_tell_factoid = r'^(que es )?((\w+\s??){1,3})\?+$'
-    re_forget_factoid = r'^olvidar(me de)? ((\w+\s??){1,3})$'
+    re_forget_factoid = r'^olvida(te de)? ((\w+\s??){1,3})$'
 
     @re_botcmd(pattern=re_learn_factoid, prefixed=True, flags=re.IGNORECASE)
     def aprender_factoides(self, message, match):
-        """Guardar un factoid. Example: !agua es humeda """
+        """Guardar un factoid. Ejemplo: !agua es humeda """
 
-        factoid = match.group(1)
+        factoid = match.group(1).lower()
         content = match.group(3)
         question = match.group(4)
 
@@ -37,7 +37,7 @@ class Factoides(BotPlugin):
     def mostrar_factoid(self, message, match):
         """ Ask about a factoid (prefix not needed). Example: water?  """
 
-        factoid = match.group(2)
+        factoid = match.group(2).lower()
         if 'FACTOID' in self:
             self.factoid_store = self['FACTOID']
 
@@ -54,7 +54,7 @@ class Factoides(BotPlugin):
         if 'FACTOID' in self:
             self.factoid_store = self['FACTOID']
 
-        factoid = match.group(2)
+        factoid = match.group(2).lower()
 
         if factoid in self.factoid_store:
             self.factoid_store.pop(factoid, None)
