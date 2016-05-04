@@ -9,7 +9,7 @@ class Factoides(BotPlugin):
     factoid_store = {}
     re_learn_factoid = r'^((\w+\s??){1,3}) es (.+?)(\?+)?$'
     re_tell_factoid = r'^(que es )?((\w+\s??){1,3})\?+$'
-    re_forget_factoid = r'^olvidar? ((\w+\s??){1,3})$'
+    re_forget_factoid = r'^olvidar(me de)? ((\w+\s??){1,3})$'
 
     @re_botcmd(pattern=re_learn_factoid, prefixed=True, flags=re.IGNORECASE)
     def aprender_factoides(self, message, match):
@@ -45,7 +45,7 @@ class Factoides(BotPlugin):
             return "%s es %s" % (factoid, format(self.factoid_store[factoid]))
 
         else:
-            return "No tengo idea de que es %s" % (factoid)
+            return "No tengo idea de que es '%s'..." % (factoid)
 
     @re_botcmd(pattern=re_forget_factoid, prefixed=True, flags=re.IGNORECASE)
     def olvidar_factoides(self, message, match):
@@ -63,10 +63,10 @@ class Factoides(BotPlugin):
             return "OK, me olvido de %s" % (format(factoid))
 
         else:
-            return "No sabia sobre." % (format(factoid))
+            return "No sabia sobre %s" % (format(factoid))
 
     @botcmd
-    def listar_factoides(self, message, args):
+    def que_sabes(self, message, args):
         """ Lista todos los factoides """
 
         if 'FACTOID' in self:
